@@ -2,50 +2,25 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>電卓/Calculator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculator Selector</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="icon-light.svg" type="image/svg+xml" />
-  <link rel="alternate icon" href="icon-light.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="header">
-    <span class="header-title">Calculator</span>
-  </header>
-  <main class="calculator">
-    <input type="text" id="display" disabled />
-    <div class="buttons">
-      <button onclick="clearDisplay()">AC</button>
-      <button onclick="backspace()">⌫</button>
-      <button onclick="appendValue('%')">%</button>
-      <button onclick="appendValue('^')">^</button>
-      <button onclick="appendValue('(')">(</button>
-
-      <button onclick="appendValue(')')">)</button>
-      <button onclick="appendValue('7')">7</button>
-      <button onclick="appendValue('8')">8</button>
-      <button onclick="appendValue('9')">9</button>
-      <button onclick="appendValue('/')">÷</button>
-
-      <button onclick="appendValue('√')">√</button>
-      <button onclick="appendValue('4')">4</button>
-      <button onclick="appendValue('5')">5</button>
-      <button onclick="appendValue('6')">6</button>
-      <button onclick="appendValue('*')">×</button>
-
-      <button onclick="toggleSign()">±</button>
-      <button onclick="appendValue('1')">1</button>
-      <button onclick="appendValue('2')">2</button>
-      <button onclick="appendValue('3')">3</button>
-      <button onclick="appendValue('-')">−</button>
-
-      <button onclick="appendValue('0')">0</button>
-      <button onclick="appendValue('.')">.</button>
-      <button class="equal" onclick="calculateResult()">=</button>
-      <button onclick="appendValue('+')">＋</button>
+  <div class="device">
+    <div class="status-bar">
+      <span>📱 Calculator Versions</span>
     </div>
-  </main>
-  <script src="script.js"></script>
+    <div class="screen">
+      <h1>バージョン選択</h1>
+      <p>以下のバージョンから選んでください。</p>
+      <div class="version-links">
+        <a href="v1/index.html">▶ Calculator v1</a>
+        <a href="v2/index.html">▶ Calculator v2</a>
+        <a href="v3/index.html">▶ Calculator v3</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

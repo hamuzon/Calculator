@@ -1,147 +1,113 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
-  background: #f3f3f3;
-  color: #222;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  margin: 0;
+  height: 100vh;
 }
-
-.header {
-  margin-bottom: 24px;
+.device {
+  border: 3px solid var(--border);
+  border-radius: 24px;
+  width: 320px;
+  background: var(--device-bg);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow: hidden;
 }
-
-.header-title {
-  font-size: 1.6em;
-  font-weight: bold;
-  letter-spacing: 1px;
+.status-bar {
+  background: var(--status-bg);
+  color: var(--status-text);
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
 }
-
-/* ライトモード */
-.calculator {
-  background: #fff;
-  padding: 20px 16px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-
-  max-width: 600px;
-  width: 90vw;
-  box-sizing: border-box;
-  margin: 0 auto 30px;
+.screen {
+  padding: 20px;
 }
-
 #display {
   width: 100%;
-  height: 60px;
-  background: #eee;
-  color: #222;
-  font-size: 4vw;
-  padding: 0 12px;
-  border: none;
-  border-radius: 8px;
-  margin-bottom: 16px;
+  font-size: 1.8rem;
   text-align: right;
-  box-sizing: border-box;
-  min-height: 48px;
-  min-font-size: 16px;
-  max-font-size: 36px;
-  user-select: none;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: var(--input-bg);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
 }
-
 .buttons {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
-
 button {
-  height: 60px;
-  font-size: 3vw;
-  min-height: 40px;
-  min-font-size: 14px;
-  max-font-size: 26px;
+  padding: 16px;
+  font-size: 1.2rem;
   border: none;
-  border-radius: 6px;
-  background: #ddd;
-  color: #222;
-  cursor: pointer;
-  padding: 0;
-  transition: background 0.2s;
-  user-select: none;
+  border-radius: 12px;
+  background: var(--button-bg);
+  color: var(--text);
+  transition: 0.2s;
 }
-
 button:hover {
-  background: #ccc;
+  background: var(--button-hover);
+}
+button.clear {
+  grid-column: span 4;
+  background: crimson;
+  color: white;
+}
+.version-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+.version-links a {
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  background: var(--button-bg);
+  color: var(--text);
+  text-align: center;
+  transition: 0.2s;
+}
+.version-links a:hover {
+  background: var(--button-hover);
 }
 
-.equal {
-  grid-column: span 2;
-  background: #ff4c4c;
-  color: #fff;
-}
-
-.equal:hover {
-  background: #ff6b6b;
-}
-
-/* ダークモード */
 @media (prefers-color-scheme: dark) {
-  body {
-    background: #121212;
-    color: #ddd;
-  }
-
-  .calculator {
-    background: #1e1e1e;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.8);
-  }
-
-  #display {
-    background: #000;
-    color: #0f0;
-  }
-
-  button {
-    background: #333;
-    color: #eee;
-  }
-
-  button:hover {
-    background: #555;
-  }
-
-  .equal {
-    background: #ff5252;
-    color: #fff;
-  }
-
-  .equal:hover {
-    background: #ff7979;
+  :root {
+    --bg: #121212;
+    --text: #f0f0f0;
+    --border: #444;
+    --device-bg: #1e1e1e;
+    --status-bg: #2a2a2a;
+    --status-text: #aaa;
+    --input-bg: #2e2e2e;
+    --button-bg: #333;
+    --button-hover: #555;
   }
 }
-
-@media (max-width: 480px) {
-  .calculator {
-    padding: 16px 4vw;
-    max-width: 100%;
-    width: 95vw;
-  }
-
-  #display {
-    height: 48px;
-    font-size: 5vw;
-  }
-
-  button {
-    height: 48px;
-    font-size: 4vw;
-  }
-
-  .header-title {
-    font-size: 1.2em;
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f7f7f7;
+    --text: #222;
+    --border: #ccc;
+    --device-bg: #fff;
+    --status-bg: #eee;
+    --status-text: #555;
+    --input-bg: #fff;
+    --button-bg: #ddd;
+    --button-hover: #bbb;
   }
 }
