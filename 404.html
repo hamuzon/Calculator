@@ -17,7 +17,6 @@
       --button-bg: #4b4130;
       --button-hover: #6a5f48;
     }
-
     @media (prefers-color-scheme: light) {
       :root {
         --bg: #f7f3e9;
@@ -31,13 +30,11 @@
         --button-hover: #c5b38f;
       }
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
       background: var(--bg);
@@ -49,31 +46,26 @@
       height: 100vh;
       text-align: center;
       padding: 2rem;
-      background-image:
-        radial-gradient(circle at center, rgba(255 255 255 / 0.05), transparent 70%);
+      background-image: radial-gradient(circle at center, rgba(255 255 255 / 0.05), transparent 70%);
     }
-
     h1 {
       font-size: 5rem;
       margin-bottom: 0.3em;
       letter-spacing: 0.15em;
     }
-
     p {
       font-size: 1.2rem;
       margin: 0.3em 0;
       color: var(--text);
       opacity: 0.9;
     }
-
     .subtext {
       font-size: 1rem;
       color: var(--status-text);
       margin-top: 0.5em;
       opacity: 0.8;
     }
-
-    a {
+    a.back {
       margin-top: 2rem;
       padding: 0.75em 2em;
       background-color: var(--button-bg);
@@ -84,12 +76,10 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.6);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
-
-    a:hover {
+    a.back:hover {
       background-color: var(--button-hover);
       box-shadow: 0 6px 12px rgba(0,0,0,0.8);
     }
-
     @media (max-width: 600px) {
       h1 {
         font-size: 3.5rem;
@@ -104,6 +94,19 @@
   <h1>404</h1>
   <p>お探しのページは見つかりませんでした。</p>
   <p class="subtext">Sorry, the page you’re looking for could not be found.</p>
-  <a href="/">トップページへ戻る</a>
+  <a id="backLink" class="back" href="/">トップページへ戻る</a>
+
+  <script>
+    const backLink = document.getElementById("backLink");
+    const host = location.hostname;
+    const path = location.pathname;
+
+    // Calculatorパスのときだけ、戻る先を修正
+    if (host === "hamuzon.github.io" && path.startsWith("/Calculator/")) {
+      backLink.href = "/Calculator/";
+    } else {
+      backLink.href = "/";
+    }
+  </script>
 </body>
 </html>
