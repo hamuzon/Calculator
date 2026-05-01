@@ -1,9 +1,9 @@
 const display = document.getElementById('display');
 function appendValue(value) {
-  const ops = "+-*/^%";
+  const ops = "+-×÷^%";
   const lastChar = display.value.slice(-1);
   if (value === '.') {
-    const tokens = display.value.split(/[\+\-\*\/\^%()]/);
+    const tokens = display.value.split(/[\+\-×÷\^%()]/);
     const currentNum = tokens[tokens.length - 1];
     if (currentNum.includes('.')) return;
     if (currentNum.length === 0) value = '0.';
@@ -48,6 +48,8 @@ function calculateResult() {
     exp = exp.replace(/cos\(/g, 'Math.cos(');
     exp = exp.replace(/tan\(/g, 'Math.tan(');
     exp = exp.replace(/√/g, 'Math.sqrt');
+    exp = exp.replace(/×/g, '*');
+    exp = exp.replace(/÷/g, '/');
     exp = exp.replace(/\^/g, '**');
     exp = exp.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
     let result = eval(exp);
@@ -64,7 +66,8 @@ function calculateResult() {
 document.addEventListener('keydown', function(e) {
   const allowedKeys = '0123456789+-*/().^%';
   if (allowedKeys.includes(e.key)) {
-    appendValue(e.key);
+    const keyMap = { '*': '×', '/': '÷' };
+    appendValue(keyMap[e.key] || e.key);
     e.preventDefault();
   } else if (e.key === 'Enter') {
     calculateResult();

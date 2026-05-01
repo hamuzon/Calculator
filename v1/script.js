@@ -1,12 +1,12 @@
 const display = document.getElementById('display');
 
 function appendValue(value) {
-  const ops = "+-*/^%";
+  const ops = "+-×÷^%";
   const lastChar = display.value.slice(-1);
 
   // 小数点重複防止
   if (value === '.') {
-    const tokens = display.value.split(/[\+\-\*\/\^%()]/);
+    const tokens = display.value.split(/[\+\-×÷\^%()]/);
     const currentNum = tokens[tokens.length - 1];
     if (currentNum.includes('.')) return;
     if (currentNum.length === 0) value = '0.';
@@ -60,6 +60,8 @@ function calculateResult() {
 
     // √ をMath.sqrt()へ変換
     exp = exp.replace(/√/g, 'Math.sqrt');
+    exp = exp.replace(/×/g, '*');
+    exp = exp.replace(/÷/g, '/');
 
     // ^を**に変換
     exp = exp.replace(/\^/g, '**');
@@ -86,7 +88,8 @@ function calculateResult() {
 document.addEventListener('keydown', function(e) {
   const allowedKeys = '0123456789+-*/().^%';
   if (allowedKeys.includes(e.key)) {
-    appendValue(e.key);
+    const keyMap = { '*': '×', '/': '÷' };
+    appendValue(keyMap[e.key] || e.key);
     e.preventDefault();
   } else if (e.key === 'Enter') {
     calculateResult();
